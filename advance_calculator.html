@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Simple Calculator</title>
+</head>
+<body>
+  <input type="text" id="result">
+  <br>
+  <button onclick="appendValue('+')">+</button>
+  <button onclick="appendValue('-')">-</button>
+  <button onclick="appendValue('*')">*</button>
+  <button onclick="appendValue('/')">/</button>
+  <button onclick="calculate()">=</button>
+  <button onclick="clearInput()">C</button>
+  <button onclick="backspace()">←</button>
+
+  <script>
+    function appendValue(value) {
+      document.getElementById('result').value += value;
+      document.getElementById('result').focus();
+    }
+
+    function calculate() {
+      try {
+        const result = eval(document.getElementById('result').value);
+        document.getElementById('result').value = result;
+      } catch (error) {
+        document.getElementById('result').value = 'Error';
+      } finally {
+        document.getElementById('result').focus();
+      }
+    }
+
+    function clearInput() {
+      document.getElementById('result').value = '';
+      document.getElementById('result').focus();
+    }
+
+    function backspace() {
+      const currentValue = document.getElementById('result').value;
+      document.getElementById('result').value = currentValue.slice(0, -1);
+      document.getElementById('result').focus();
+    }
+  </script>
+
+</body>
+</html>
