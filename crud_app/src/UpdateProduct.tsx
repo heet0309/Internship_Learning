@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -50,10 +48,8 @@ const UpdateProduct = () => {
       return item;
     });
 
-    // Save the updated storedData back to localStorage
     localStorage.setItem("product", JSON.stringify(updatedData));
 
-    // You can also update the state if necessary
     console.log(updatedData);
     setStoredData(updatedData);
 

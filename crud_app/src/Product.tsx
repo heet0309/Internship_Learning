@@ -21,11 +21,6 @@ const Product = () => {
     navigate('/UpdateProduct',{state:{data:id}})
   };
 
-  // const handleDelete = (productId: number) => {
-  //   const updatedProducts = products.filter((product) => product.id !== productId);
-  //   setProducts(updatedProducts);
-  //   localStorage.setItem('product', JSON.stringify(updatedProducts));
-  // };
   const handleDelete = (id:number) => {
     const shouldRemove = window.confirm("Are you sure you want to remove this task?");
     if (shouldRemove) {
