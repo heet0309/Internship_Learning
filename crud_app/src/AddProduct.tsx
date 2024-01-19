@@ -8,6 +8,7 @@ interface Todo {
   completed: boolean;
 }
 
+
 const App: React.FC = () => {
     const navigate=useNavigate();
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -34,6 +35,19 @@ const App: React.FC = () => {
       completed: newTodo.completed,
     };
   
+    const addProducts = fetch('https://jsonplaceholder.typicode.com/todos', {
+        method: 'POST',
+        body: JSON.stringify({
+          userId: newTodo.userId,
+          id: newTodo.id,
+          title: newTodo.title,
+          completed : newTodo.completed
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+
     const updatedTodos = [...todos, newTodoItem];
   
     setTodos(updatedTodos);

@@ -1,5 +1,6 @@
   import { useState } from 'react';
   import { useNavigate } from 'react-router-dom';
+  import { useEffect } from 'react';
 
   interface UserCredentials {
     username: string;
@@ -13,7 +14,17 @@
       password: '',
     });
 
-    const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
+  
+  
+  useEffect(() => {
+  const isLoggedIn = localStorage.getItem("isLoggedIn")
+    if (isLoggedIn==="true") {
+      navigate('/Home');
+    }
+  }, [ navigate]);
+   
+    
+
 
     const handleInputChange = (
       event: React.ChangeEvent<HTMLInputElement>,
@@ -27,7 +38,7 @@
 
     const handleLogin = () => {
       if (credentials.username === 'heet' && credentials.password === 'heet') {
-        setLoggedIn(true);
+        localStorage.setItem("isLoggedIn","true");
         navigate('/Home')
       } else {
         alert('Invalid credentials. Please try again.');

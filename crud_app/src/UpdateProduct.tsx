@@ -16,7 +16,6 @@ const UpdateProduct = () => {
   const [storedData, setStoredData] = useState<Todo[]>([]);
 
   useEffect(() => {
-    // Retrieve data from local storage
     const retrievedData = localStorage.getItem("product");
 
     if (retrievedData) {
@@ -34,7 +33,6 @@ const UpdateProduct = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Update the corresponding data in storedData
     const updatedData = storedData.map((item) => {
       if (item.id === parseInt(data, 10)) {
         return {
@@ -54,6 +52,20 @@ const UpdateProduct = () => {
     setStoredData(updatedData);
 
     navigate('/Product');
+
+    const updatedProducts=fetch('https://jsonplaceholder.typicode.com/posts/1', {
+      method: 'PUT',
+      body: JSON.stringify({
+        userId: parseInt(UserID, 10),
+        title,
+        data,
+        completed,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+
   };
 
   return (

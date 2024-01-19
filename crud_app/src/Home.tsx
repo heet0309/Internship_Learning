@@ -8,11 +8,18 @@ const Home: React.FC = () => {
     navigate('/Product')
 };
 
+const handleLogOut = () => {
+    localStorage.setItem("isLoggedIn","false");
+    navigate('/')
+};
   return (
     
       <div>
         <h2>Welcome to the Home Page!</h2>
         <button onClick={navigateToProductPage}>Products</button>
+        <div>
+        <button onClick={handleLogOut}>Logout</button>
+      </div>
       </div>
     );
   };

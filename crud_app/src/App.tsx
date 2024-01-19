@@ -4,6 +4,7 @@ import Home from './Home';
 import Product from './Product';
 import UpdateProduct from './UpdateProduct';
 import AddProduct from './AddProduct';
+import ViewProduct from './ViewProduct'
 
 
 const App: React.FC = () => {
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         <Route path="/Product" element={<Product/>}/>
         <Route path='/AddProduct' element={<AddProduct/>}></Route>
         <Route path='/UpdateProduct' element={<UpdateProduct/>}/>
+        <Route path='/ViewProduct' element={<ViewProduct/>}/>
         </Routes>
     </Router>
   );
